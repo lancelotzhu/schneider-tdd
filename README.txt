@@ -1,3 +1,9 @@
+Schneider TDD DOJO User Story
+--------------------------------------------------------------------------------
+1. 作为客户，我想买入股票，这样当它们上涨时我可以卖出赚钱
+2. 作为客户，我想卖掉股票，这样上涨时我可以赚钱，下跌时我可以避免蒙受更大的损失
+
+
 AppFuse Modular Struts 2 Archetype
 --------------------------------------------------------------------------------
 If you're reading this then you've created your new project using Maven and

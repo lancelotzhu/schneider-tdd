@@ -15,6 +15,7 @@
     <name>AppFuse Modular Application - Web (Struts 2)</name>
 
     <build>
+    	<finalName>tdd</finalName>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

@@ -1,4 +1,4 @@
-package com.schneider.tdd.service;
+package com.schneider.tdd.service.impl;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -6,7 +6,10 @@ import java.math.BigDecimal;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 
-public class DefaultStockQueryService implements StockQueryService {
+import com.schneider.tdd.service.StockInfo;
+import com.schneider.tdd.service.StockQueryService;
+
+public class StockQueryServiceImpl implements StockQueryService {
 
 	public StockInfo queryStockInfoByCode(String code) {
 		String url = "http://hq.sinajs.cn/list=";

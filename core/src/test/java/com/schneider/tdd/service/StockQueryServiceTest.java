@@ -6,9 +6,11 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
+import com.schneider.tdd.service.impl.StockQueryServiceImpl;
+
 public class StockQueryServiceTest {
 
-	private StockQueryService target = new DefaultStockQueryService();
+	private StockQueryService target = new StockQueryServiceImpl();
 	
 	@Test
 	public void queryStockInfoBySHCode() {

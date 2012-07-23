@@ -6,8 +6,8 @@
     <artifactId>tdd</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>AppFuse Modular Application</name>
-    <url>http://www.mycompany.com</url>
+    <name>schneider tdd DOJO</name>
+    <url>http://www.schneider.com</url>
 
     <prerequisites>
         <maven>2.2.1</maven>

@@ -8,7 +8,6 @@ import static org.easymock.EasyMock.verify;
 
 import java.math.BigDecimal;
 
-import org.easymock.IArgumentMatcher;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,6 +17,7 @@ import com.schneider.tdd.model.Account;
 import com.schneider.tdd.model.Trade;
 import com.schneider.tdd.service.impl.TradeServiceImpl;
 import com.schneider.tdd.util.Matchers;
+import com.schneider.tdd.util.Matchers.BaseMatcher;
 
 public class TradeServiceTest {
 	
@@ -40,9 +40,8 @@ public class TradeServiceTest {
 		account.setId(-1L);
 		account.setBalance(new BigDecimal("100000"));
 		expect(accountDao.get(eq(-1L))).andStubReturn(account);
-		accountDao.update(Matchers.eq(Account.class, new IArgumentMatcher() {
-			public boolean matches(Object argument) {
-				Account actual = (Account) argument;
+		accountDao.update(Matchers.eq(new BaseMatcher<Account>() {
+			public boolean matches(Account actual) {
 				return new BigDecimal("100000").subtract(
 						new BigDecimal("8.88").multiply(
 						new BigDecimal("500"))).compareTo(
@@ -51,9 +50,8 @@ public class TradeServiceTest {
 			public void appendTo(StringBuffer buffer) {
 			}
 		}));
-		expect(tradeDao.create(Matchers.eq(Trade.class, new IArgumentMatcher() {
-			public boolean matches(Object argument) {
-				Trade actual = (Trade) argument;
+		expect(tradeDao.create(Matchers.eq(new BaseMatcher<Trade>() {
+			public boolean matches(Trade actual) {
 				return new Long(-1L).equals(actual.getAccount().getId())
 					&& "601857".equals(actual.getStockCode())
 					&& new Integer("500").equals(actual.getQuantity());

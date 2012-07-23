@@ -6,6 +6,7 @@
         <class>org.appfuse.model.User</class>
         <class>org.appfuse.model.Role</class>
         <class>com.schneider.tdd.model.Account</class>
+        <class>com.schneider.tdd.model.Trade</class>
         
         <!-- 
         Adding more <class>f.q.c.Name</class> elements here is not required.  

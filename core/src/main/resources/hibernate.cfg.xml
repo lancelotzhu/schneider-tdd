@@ -9,5 +9,6 @@
         <mapping class="org.appfuse.model.User"/>
         <mapping class="org.appfuse.model.Role"/>
         <mapping class="com.schneider.tdd.model.Account"/>
+        <mapping class="com.schneider.tdd.model.Trade"/>
     </session-factory>
 </hibernate-configuration>

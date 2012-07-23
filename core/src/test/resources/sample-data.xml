@@ -90,4 +90,28 @@
             <value description="role_id">-1</value>
         </row>
     </table>
+    <table name="account">
+        <column>id</column>
+        <column>balance</column>
+        <column>status</column>
+        <column>date_created</column>
+        <column>user_id</column>
+        <column>version</column>
+        <row>
+            <value description="id">-1</value>
+            <value description="balance">100000</value>
+            <value description="status">VALID</value>
+            <value description="date_created">2012-07-23 12:00:00</value>
+            <value description="user_id">-1</value>
+            <value description="version">1</value>
+        </row>
+        <row>
+            <value description="id">-2</value>
+            <value description="balance">0</value>
+            <value description="status">VALID</value>
+            <value description="date_created">2012-07-23 12:00:00</value>
+            <value description="user_id">-2</value>
+            <value description="version">1</value>
+        </row>
+    </table>        
 </dataset>

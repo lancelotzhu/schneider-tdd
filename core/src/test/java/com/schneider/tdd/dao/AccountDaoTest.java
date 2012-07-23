@@ -27,7 +27,6 @@ public class AccountDaoTest extends BaseDaoTestCase {
 		account.setBalance(new BigDecimal("100000"));
 		account.setStatus("VALID");
 		account.setDateCreated(new Date());
-		account.setDateModified(new Date());
 		account.setUser(userDao.get(-1L));
 		account = target.create(account);
 		

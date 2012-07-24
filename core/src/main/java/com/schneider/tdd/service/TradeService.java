@@ -7,10 +7,12 @@ import com.schneider.tdd.dao.TradeDao;
 
 public interface TradeService {
 
+	void buy(long accountId, String stockCode, BigDecimal price, int quantity);
+
 	void setTradeDao(TradeDao tradeDao);
 
 	void setAccountDao(AccountDao accountDao);
 
-	void buy(long accountId, String stockCode, BigDecimal price, int quantity);
+	void setStockQueryService(StockQueryService stockQueryService);
 
 }

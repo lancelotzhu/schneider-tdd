@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import org.appfuse.dao.BaseDaoTestCase;
 import org.appfuse.dao.UserDao;
@@ -32,7 +33,7 @@ public class AccountDaoTest extends BaseDaoTestCase {
 		
 		account.setBalance(new BigDecimal("90000"));
 		target.update(account);		
-		account = target.getByUsername("user").iterator().next();
+		account = target.get(account.getId());
 		assertEquals(new BigDecimal("90000"), account.getBalance());
 		
 		target.delete(account.getId());
@@ -40,6 +41,12 @@ public class AccountDaoTest extends BaseDaoTestCase {
 			target.get(account.getId());
 		} catch (ObjectRetrievalFailureException ignored) {
 		}
+	}
+	
+	@Test
+	public void getAccountByUsername() {
+		List<Account> accounts = target.getByUsername("admin");
+		assertEquals(1, accounts.size());
 	}
 
 }

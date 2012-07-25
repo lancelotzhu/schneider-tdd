@@ -14,6 +14,6 @@ public interface TradeDao {
 
 	Trade get(Long id);
 
-	List<Trade> getByAccountId(Long accountId);
+	List<Trade> getAllUncomplete();
 
 }

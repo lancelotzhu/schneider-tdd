@@ -1,12 +1,13 @@
 package com.schneider.tdd.dao.hibernate;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.appfuse.dao.hibernate.GenericDaoHibernate;
 import org.springframework.stereotype.Repository;
 
 import com.schneider.tdd.dao.TradeDao;
-import com.schneider.tdd.model.Account;
 import com.schneider.tdd.model.Trade;
 
 @Repository(value="tradeDao")
@@ -32,13 +33,10 @@ public class TradeDaoHibernate extends GenericDaoHibernate<Trade, Long> implemen
 		return super.get(id);
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Trade> getByAccountId(Long accountId) {
-		Trade example = new Trade();
-		Account account = new Account();
-		account.setId(accountId);
-		example.setAccount(account);
-		return this.getHibernateTemplate().findByExample(example);
+	public List<Trade> getAllUncomplete() {
+		Map<String, Object> queryParams = new HashMap<String, Object>();
+		queryParams.put("status", "已报");
+		return this.findByNamedQuery("getAllUncomplete", queryParams);
 	}
 
 }

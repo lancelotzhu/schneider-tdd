@@ -90,4 +90,5 @@ public class TradeServiceTest {
 		target.buy(-1L, "999999", new BigDecimal("8.88"), 500);		
 		verify(accountDao, stockQueryService);
 	}
+	
 }

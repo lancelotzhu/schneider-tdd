@@ -4,10 +4,12 @@ import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import org.appfuse.dao.BaseDaoTestCase;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.ObjectRetrievalFailureException;
 
 import com.schneider.tdd.model.Trade;
 
@@ -34,14 +36,22 @@ public class TradeDaoTest extends BaseDaoTestCase {
 		
 		trade.setStatus("已成");
 		target.update(trade);		
-		trade = target.getByAccountId(-1L).iterator().next();
+		trade = target.get(trade.getId());
 		assertEquals("已成", trade.getStatus());
 		
-//		target.delete(trade.getId());
-//		try {
-//			target.get(trade.getId());
-//		} catch (ObjectRetrievalFailureException ignored) {
-//		}
+		target.delete(trade.getId());
+		try {
+			target.get(trade.getId());
+		} catch (ObjectRetrievalFailureException ignored) {
+		}
+	}
+	
+	@Test
+	public void getAllUncomplete() {
+		List<Trade> trades = target.getAllUncomplete();
+		for (Trade trade : trades) {
+			assertEquals("已报", trade.getStatus());
+		}
 	}
 
 }

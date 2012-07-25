@@ -11,11 +11,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
 @Table(name = "trade")
+@NamedQueries({
+        @NamedQuery(
+                name = "getAllUncomplete",
+                query = "select t from Trade t where t.status = :status"
+        )
+})
 public class Trade implements Serializable {
 
 	private static final long serialVersionUID = -7136801276566908945L;

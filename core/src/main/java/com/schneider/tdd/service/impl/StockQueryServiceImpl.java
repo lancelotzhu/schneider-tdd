@@ -5,10 +5,12 @@ import java.math.BigDecimal;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
+import org.springframework.stereotype.Service;
 
 import com.schneider.tdd.service.StockInfo;
 import com.schneider.tdd.service.StockQueryService;
 
+@Service(value="stockQueryService")
 public class StockQueryServiceImpl implements StockQueryService {
 
 	public StockInfo queryStockInfoByCode(String code) {

@@ -15,4 +15,6 @@ public interface TradeService {
 
 	void setStockQueryService(StockQueryService stockQueryService);
 
+	void autoTrade();
+
 }

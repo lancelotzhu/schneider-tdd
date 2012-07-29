@@ -131,11 +131,4 @@
         </action>
     </package>
 
-    <package name="stock" extends="default" namespace="/stock">
-        <action name="buy" class="buyAction" method="execute">
-            <result name="success">/WEB-INF/pages/stock/buy.jsp</result>
-            <result name="error">/WEB-INF/pages/mainMenu.jsp</result>
-        </action>        
-    </package>
-
 </struts>

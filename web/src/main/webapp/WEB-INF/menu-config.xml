@@ -6,6 +6,12 @@
     <Menus>
         <Menu name="MainMenu" title="mainMenu.title" page="/mainMenu" roles="ROLE_ADMIN,ROLE_USER"/>
         <Menu name="UserMenu" title="menu.user" description="User Menu" page="/editProfile" roles="ROLE_ADMIN,ROLE_USER"/>
+        <Menu name="StockMenu" title="menu.stock" description="Stock Menu" page="/stock/myAccount" roles="ROLE_ADMIN,ROLE_USER">
+            <Item name="MyAccount" title="menu.stock.myAccount" page="/stock/myAccount"/>
+            <Item name="BuyStock" title="menu.stock.buy" page="/stock/buy"/>
+            <Item name="SellStock" title="menu.stock.sell" page="/stock/sell"/>
+            <Item name="MyOrder" title="menu.stock.myOrder" page="/stock/myOrder"/>
+        </Menu>
         <Menu name="AdminMenu" title="menu.admin" description="Admin Menu" roles="ROLE_ADMIN" width="120" page="/admin/users">
             <Item name="ViewUsers" title="menu.admin.users" page="/admin/users"/>
             <Item name="ActiveUsers" title="mainMenu.activeUsers" page="/admin/activeUsers"/>

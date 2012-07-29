@@ -28,4 +28,10 @@
         <property name="mailEngine" ref="mailEngine"/>
         <property name="mailMessage" ref="mailMessage"/>
     </bean>
+
+    <bean id="buyAction" class="com.schneider.webapp.action.stock.BuyAction" scope="prototype">
+        <property name="tradeService" ref="tradeService"/>
+        <property name="stockQueryService" ref="stockQueryService"/>
+    </bean>
+
 </beans>

@@ -8,6 +8,8 @@ import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.velocity.util.StringUtils;
 
+import com.schneider.tdd.TddException;
+
 public class StockQuery {
 
 	public StockBean query(String stockCode) {
@@ -27,9 +29,9 @@ public class StockQuery {
 		try {
 			client.executeMethod(get);
 		} catch (HttpException e1) {
-			throw new RuntimeException(e1);
+			throw new TddException(e1);
 		} catch (IOException e1) {
-			throw new RuntimeException(e1);
+			throw new TddException(e1);
 		}
 		// execute method and handle any error responses.
 
@@ -50,7 +52,7 @@ public class StockQuery {
 			stock.setTodayMinPrice(new BigDecimal(resultArray[5]));
 
 		} catch (IOException e) {
-			throw new RuntimeException(e);
+			throw new TddException(e);
 		} finally {
 			// Process the data from the input stream.
 			get.releaseConnection();

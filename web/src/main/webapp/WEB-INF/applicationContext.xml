@@ -30,22 +30,4 @@
     <!-- Add new DAOs here -->
 
     <!-- Add new Managers here -->
-    
-	<bean id="autoTradeJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-	  <property name="targetObject" ref="tradeService" />
-	  <property name="targetMethod" value="autoTrade" />
-	</bean> 
-	
-	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
-	    <property name="jobDetail" ref="autoTradeJob" />
-	    <property name="cronExpression" value="0 * * * * ?" />
-	</bean>	  
-	
-	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-	    <property name="triggers">
-	        <list>
-	            <ref bean="cronTrigger" />
-	        </list>
-	    </property>
-	</bean>	
 </beans>

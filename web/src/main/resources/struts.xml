@@ -111,6 +111,10 @@
         </action>
 
         <!-- Add additional actions here -->
+        <action name="buyStock" class="com.schneider.webapp.action.BuyStockAction">
+            <result name="input">/WEB-INF/pages/buy.jsp</result>
+            <result name="success">/WEB-INF/pages/buy.jsp</result>
+        </action>
     </package>
 
     <!-- Actions in this package will be prefixed with /admin/ -->

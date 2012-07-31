@@ -10,35 +10,35 @@ import org.apache.velocity.util.StringUtils;
 
 public class StockQuery {
 
-	public StockBean query(String stockCode){
-		
+	public StockBean query(String stockCode) {
+
 		String locationCode = StockUtil.getLocationCode(stockCode);
-		
-		String realStockCode = new StringBuilder(locationCode).append(stockCode).toString();
-		
+
+		String realStockCode = new StringBuilder(locationCode)
+				.append(stockCode).toString();
+
 		StockBean stock = null;
-		
-		String url = new StringBuilder("http://hq.sinajs.cn/list=").append(realStockCode).toString();
+
+		String url = new StringBuilder("http://hq.sinajs.cn/list=").append(
+				realStockCode).toString();
 		HttpClient client = new HttpClient();
 
 		GetMethod get = new GetMethod(url);
 		try {
 			client.executeMethod(get);
 		} catch (HttpException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			throw new RuntimeException(e1);
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			throw new RuntimeException(e1);
 		}
-        // execute method and handle any error responses.
-        
-        try {
+		// execute method and handle any error responses.
+
+		try {
 			String results = get.getResponseBodyAsString();
-			
-			int beginPosition = results.indexOf("\"")+1;
-			int endPosition = results.lastIndexOf("\"")-1;
-			
+
+			int beginPosition = results.indexOf("\"") + 1;
+			int endPosition = results.lastIndexOf("\"") - 1;
+
 			String cleanResults = results.substring(beginPosition, endPosition);
 			String[] resultArray = StringUtils.split(cleanResults, ",");
 			stock = new StockBean();
@@ -48,15 +48,14 @@ public class StockQuery {
 			stock.setCurrentPrice(new BigDecimal(resultArray[3]));
 			stock.setTodayMaxPrice(new BigDecimal(resultArray[4]));
 			stock.setTodayMinPrice(new BigDecimal(resultArray[5]));
-			
+
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally{
+			throw new RuntimeException(e);
+		} finally {
 			// Process the data from the input stream.
-	        get.releaseConnection();
+			get.releaseConnection();
 		}
-		
+
 		return stock;
 	}
 }
